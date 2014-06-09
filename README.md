@@ -3,7 +3,7 @@ sh
 
 Using Proxies to run shell commands.
 
-Uses `node v0.11.x` & the `--enable-proxies`
+Uses `node v0.11.x` & `--enable-proxies` option.
 
 ## Install
 
