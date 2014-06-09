@@ -1,9 +1,20 @@
 /* global Proxy */
+var which = require('which');
+
 
 var sh = Proxy.create({
   get: function(receiver, value) {
-    return Math.random();
+    return function _cmd(cb){
+      which(value, cb);
+    };
   }
 });
 
-console.log(sh.ls);
+sh.ls(function(){
+  console.log(arguments);
+});
+
+
+sh.dontexist(function(){
+  console.log(arguments);
+});

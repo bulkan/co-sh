@@ -1,0 +1,27 @@
+{
+  "name": "sh",
+  "version": "0.0.1",
+  "description": "Call any program as if it were a function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bulkan/sh.git"
+  },
+  "keywords": [
+    "sh",
+    "path",
+    "dsl"
+  ],
+  "author": "Bulkan Evcimen <bulkan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bulkan/sh/issues"
+  },
+  "homepage": "https://github.com/bulkan/sh",
+  "dependencies": {
+    "which": "^1.0.5"
+  }
+}
