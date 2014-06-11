@@ -34,6 +34,7 @@ co(function *(){
   try {
     yield sh.nonexistingcmd();
   } catch(e){
+    console.log(e);
   }
 })();
 ```
