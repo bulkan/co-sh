@@ -40,7 +40,9 @@ co(function *(){
 
 Assuming the above code is in a file called `test.js` run it using;
 
-    node --harmony-proxies --harmony--generators index.js
+    node --harmony-proxies --harmony--generators test.js
+
+See the examples folder for more
 
 ## LICENCE
 
