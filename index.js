@@ -7,25 +7,32 @@ var read = require('co-read');
 
 var sh = Proxy.create({
   get: function(receiver, value) {
-    function _cmd(cb){
-      which(value, function(err, path){
-        if (err) {
+
+    // use a command-line args parser
+    value = value.split(' ');
+    var cmd = value[0];
+    var args = value.splice(1, value.length);
+
+    return thunkify(function _cmd(cb){
+      which(cmd, function(err, path){
+        if (err || !path) {
           return cb(err);
         }
-        return cb(null, child_process.spawn(path));
+
+        console.log(value);
+        return cb(null, child_process.spawn(cmd, args));
       });
-    }
-    return thunkify(_cmd);
+    })
   }
 });
 
 
 
 co(function *(){
-  var ls = yield sh.ls();
+  var tail = yield sh['tail -F index.js']();
 
   var buf;
-  while (buf = yield read(ls.stdout)) {
+  while (buf = yield read(tail.stdout)) {
     console.log(buf.toString());
   }
 
@@ -35,8 +42,4 @@ co(function *(){
     console.log(e);
   }
   
-
-
 })();
-
-
