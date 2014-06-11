@@ -6,9 +6,13 @@ var child_process = require('child_process');
 var sh = Proxy.create({
   get: function(receiver, value) {
 
-    // use a command-line args parser
+    //TODO: use a command-line args parser
     value = value.split(' ');
+
+    // the command
     var cmd = value[0];
+
+    // and its arguments/options
     var args = value.splice(1, value.length);
 
     return thunkify(function _cmd(cb){
