@@ -26,5 +26,9 @@
     "co-read": "0.0.2",
     "thunkify": "^2.1.2",
     "which": "^1.0.5"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1"
   }
 }
