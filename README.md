@@ -1,7 +1,7 @@
 sh
 ==
 
-Using Proxies & Generators to run shell commands.
+Call any shell command like a function using EcmaScript 6 Proxies & Generators.
 
 Uses `node v0.11.x` with  `--harmony-proxies --harmony-generators` flags, along with 
 
@@ -44,6 +44,6 @@ Assuming the above code is in a file called `test.js` run it using;
 
 See the examples folder for more
 
-## LICENCE
+## License
 
 MIT
