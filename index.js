@@ -1,14 +1,19 @@
-
 var thunkify = require('thunkify');
 var which = require('which');
 var co = require('co');
-//var read = require('co-read');
+var child_process = require('child_process');
+var read = require('co-read');
 
 
 var sh = Proxy.create({
   get: function(receiver, value) {
     function _cmd(cb){
-      which(value, cb);
+      which(value, function(err, path){
+        if (err) {
+          return cb(err);
+        }
+        return cb(null, child_process.spawn(path));
+      });
     }
     return thunkify(_cmd);
   }
@@ -19,13 +24,19 @@ var sh = Proxy.create({
 co(function *(){
   var ls = yield sh.ls();
 
-  
-  //var ls = yield whichThunk('ls')
+  var buf;
+  while (buf = yield read(ls.stdout)) {
+    console.log(buf.toString());
+  }
 
-  console.log(ls);
+  try {
+    yield sh.dontexist();
+  } catch(e) {
+    console.log(e);
+  }
+  
+
+
 })();
 
 
-//sh.dontexist(function(){
-  //console.log(arguments);
-//});
