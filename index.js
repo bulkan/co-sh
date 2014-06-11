@@ -1,20 +1,31 @@
-/* global Proxy */
+
+var thunkify = require('thunkify');
 var which = require('which');
+var co = require('co');
+//var read = require('co-read');
 
 
 var sh = Proxy.create({
   get: function(receiver, value) {
-    return function _cmd(cb){
+    function _cmd(cb){
       which(value, cb);
-    };
+    }
+    return thunkify(_cmd);
   }
 });
 
-sh.ls(function(){
-  console.log(arguments);
-});
 
 
-sh.dontexist(function(){
-  console.log(arguments);
-});
+co(function *(){
+  var ls = yield sh.ls();
+
+  
+  //var ls = yield whichThunk('ls')
+
+  console.log(ls);
+})();
+
+
+//sh.dontexist(function(){
+  //console.log(arguments);
+//});

@@ -22,6 +22,9 @@
   },
   "homepage": "https://github.com/bulkan/sh",
   "dependencies": {
+    "co": "^3.0.6",
+    "co-read": "0.0.2",
+    "thunkify": "^2.1.2",
     "which": "^1.0.5"
   }
 }
