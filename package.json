@@ -1,5 +1,5 @@
 {
-  "name": "sh",
+  "name": "co-sh",
   "version": "0.0.1",
   "description": "Call any program as if it were a function",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bulkan/sh.git"
+    "url": "git://github.com/bulkan/co-sh.git"
   },
   "keywords": [
     "sh",
@@ -18,9 +18,9 @@
   "author": "Bulkan Evcimen <bulkan@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bulkan/sh/issues"
+    "url": "https://github.com/bulkan/co-sh/issues"
   },
-  "homepage": "https://github.com/bulkan/sh",
+  "homepage": "https://github.com/bulkan/co-sh",
   "dependencies": {
     "co": "^3.0.6",
     "co-read": "0.0.2",
