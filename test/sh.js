@@ -36,6 +36,27 @@ describe('sh', function(){
     })(done);
   });
 
+  it('should allow hyphenated commands', function(done){
+
+    process.env.PATH = process.env.PATH + ":" + __dirname
+
+    co(function *(){
+      var cmd = yield sh['sample-cmd --help']();
+
+      var out = '', buf;
+
+      while (buf = yield read(cmd.stdout)) {
+        out += buf.toString();
+      }
+
+      should.exist(out);
+      out.should.equal('trololol\n');
+
+
+    })(done);
+
+  });
+
   it('should throw errors on missing cmds', function(done){
     co(function *(){
       yield sh.idontexist()
