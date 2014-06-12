@@ -27,7 +27,7 @@ co(function *(){
   var ls = yield sh.ls();
 
   var buf;
-  while (buf = yield read(tail.stdout)) {
+  while (buf = yield read(ls.stdout)) {
     console.log(buf.toString());
   }
 
