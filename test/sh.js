@@ -66,4 +66,23 @@ describe('sh', function(){
       done();
     });
   })
+
+  it('should allow for semicolon seperated command strings', function(done){
+    co(function *(){
+      var cmd = yield sh['ls; ls']();
+
+      var out = '', buf;
+
+      while (buf = yield read(cmd.stdout)) {
+        out += buf.toString();
+      }
+
+      console.log(out);
+
+
+    })(function(err){
+      should.not.exist(err);
+      done();
+    });
+  });
 })
