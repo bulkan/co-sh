@@ -1,6 +1,6 @@
 {
   "name": "co-sh",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Call any program as if it were a function",
   "main": "index.js",
   "scripts": {
