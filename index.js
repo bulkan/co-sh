@@ -1,29 +1,22 @@
-var thunkify = require('thunkify');
-var which = require('which');
-var child_process = require('child_process');
+const {promisify} = require('util');
+const which = promisify(require('which'));
+const child_process = require('child_process');
+const execAsync = promisify(child_process.exec);
 
-
-var sh = Proxy.create({
-  get: function(receiver, value) {
+const sh = new Proxy({}, {
+  get: function(receiver, _value) {
 
     //TODO: use a command-line args parser
-    value = value.split(' ');
-
+    const value = _value.split(' ');
+    
     // the command
-    var cmd = value[0];
-
+    const cmd = value[0];
+    
     // and its arguments/options
-    var args = value.splice(1, value.length);
-
-    return thunkify(function _cmd(cb){
-      which(cmd, function(err, path){
-        if (err || !path) {
-          return cb(err);
-        }
-
-        return cb(null, child_process.spawn(cmd, args));
-      });
-    })
+    const args = value.splice(1, value.length);
+  
+    return execAsync(_value)
+      .catch(err => console.error(err));
   }
 });
 
